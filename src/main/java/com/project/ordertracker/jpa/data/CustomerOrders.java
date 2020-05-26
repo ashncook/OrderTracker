@@ -6,8 +6,12 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.Data;
 
@@ -19,11 +23,12 @@ public class CustomerOrders implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "TIME_ORDER_PLACED")
+    @CreationTimestamp
+    @Column(name = "TIME_ORDER_PLACED", columnDefinition = "CURRENT_TIMESTAMP")
     private Timestamp timeOrderPlaced;
 
     @Column(name = "CUSTOMER_ID")
@@ -32,6 +37,7 @@ public class CustomerOrders implements Serializable {
     @Column(name = "RECIPE_ID")
     private Long recipeId;
 
+    @UpdateTimestamp
     @Column(name = "TIME_ORDER_UPDATED", columnDefinition = "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp timeOrderUpdated;
 

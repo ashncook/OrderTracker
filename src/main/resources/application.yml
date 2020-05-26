@@ -1,9 +1,9 @@
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/ORDER_PROCESSING
+        url: jdbc:mysql://localhost:3306/ORDER_PROCESSING?serverTimezone=US/Eastern
         username: root
         password: rootPassword
-        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
         hibernate:
             naming: 
